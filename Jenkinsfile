@@ -85,14 +85,6 @@ pipeline {
         bat "docker run --name shilpa -d -p 8888:9090 devops:${BUILD_NUMBER}"
         }
        }
-            stage('Deploy our image') {
-                                        steps{
-                                               script {
-                                                            docker.withRegistry( 'https://registry.hub.docker.com', 'DockerHub' ) {
-                                                            devops:${BUILD_NUMBER}.push()
-                                                        }
-                                                }            
-                                               }
                                        }
     }
 }
