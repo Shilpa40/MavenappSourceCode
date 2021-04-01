@@ -10,7 +10,7 @@ LABEL maintainer = "shilpa bains"
 COPY target/First-web-app.war /usr/local/tomcat/webapps/
 
 #On which port it will run
-EXPOSE 9090
+EXPOSE 9000
 
 # Run the tomcat server
 CMD ["catalina.sh", "run"]
