@@ -66,7 +66,7 @@ pipeline {
         stage('Building our image') {
                         steps{
                         script {
-                            bat "docker build --name shilpa -t devops:${BUILD_NUMBER} ."
+                            bat "docker build -t devops:${BUILD_NUMBER} ."
                         }
                       }
                    }
@@ -82,7 +82,7 @@ pipeline {
         {
         steps
         {
-        bat "docker run -d -p 9055:9090 devops:${BUILD_NUMBER}"
+        bat "docker run --name shilpa -d -p 9050:8080 assignmentdevimage:${BUILD_NUMBER}"
         }
        }
             stage('Deploy our image') {
