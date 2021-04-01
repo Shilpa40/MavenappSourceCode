@@ -2,7 +2,7 @@
 pipeline {
     agent any   
     environment {
-                    registry = "shilpabains/first-webapp1"
+                    registry = "shilpabains/dock"
                     registryCredential = 'DockerHub'
                     dockerImage = ''
                  }
@@ -66,7 +66,7 @@ pipeline {
         stage('Building our image') {
                         steps{
                         script {
-                            bat "docker build -t devops:${BUILD_NUMBER} ."
+                            app= bat "docker build -t devops:${BUILD_NUMBER} ."
                         }
                       }
                    }
@@ -82,9 +82,17 @@ pipeline {
         {
         steps
         {
-        bat "docker run --name shilpa -d -p 8888:9090 devops:${BUILD_NUMBER}"
+        bat "docker run --name shilpa -d -p 8855:9000 devops:${BUILD_NUMBER}"
         }
        }
-                                       
+       
+            stage('Deploy our image') {
+                                        steps{
+                                               script {
+                                                            docker.withRegistry( 'https://registry.hub.docker.com', 'DockerHub' ) {
+                                                            app.push()
+                                                        }
+                                                }            
+                                               }                               
     }
 }
