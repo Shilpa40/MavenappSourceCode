@@ -81,7 +81,7 @@ pipeline {
                                         steps{
                                                script {
                                                             docker.withRegistry( 'https://registry.hub.docker.com', 'DockerHub' ) {
-                                                            dockerImage.push()
+                                                            devops:${BUILD_NUMBER}.push()
                                                         }
                                                 }            
                                                }
