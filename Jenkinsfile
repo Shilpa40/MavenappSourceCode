@@ -85,6 +85,6 @@ pipeline {
         bat "docker run --name shilpa -d -p 8888:9090 devops:${BUILD_NUMBER}"
         }
        }
-                                       }
+                                       
     }
 }
