@@ -66,7 +66,7 @@ pipeline {
         stage('Building our image') {
                         steps{
                         script {
-                            bat "docker build -name shilpa -t devops:${BUILD_NUMBER} ."
+                            bat "docker build --name shilpa -t devops:${BUILD_NUMBER} ."
                         }
                       }
                    }
