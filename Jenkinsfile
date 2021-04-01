@@ -66,10 +66,18 @@ pipeline {
         stage('Building our image') {
                         steps{
                         script {
-                            bat "docker build -t devops:${BUILD_NUMBER} ."
+                            bat "docker build -name shilpa -t devops:${BUILD_NUMBER} ."
                         }
                       }
                    }
+       stage("Cleaning Previous Deployment"){
+            steps{
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                            bat "docker stop shilpa"
+                            bat "docker rm -f shilpa"
+                        }
+            }
+        }
        stage ("Docker Deployment")
         {
         steps
