@@ -7,7 +7,7 @@ FROM tomcat:latest
 LABEL maintainer = "shilpa bains"
 
 # Copy the war file 
-COPY C:/Users/shilpa/eclipse-workspace/First-web-app/target/first-webapp1.war /usr/local/tomcat/webapps/
+COPY C:/Users/shilpa/eclipse-workspace/First-web-app/target/First-webapp1.war /usr/local/tomcat/webapps/
 
 #On which port it will run
 EXPOSE 8095
