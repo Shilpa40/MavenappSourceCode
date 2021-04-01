@@ -74,7 +74,7 @@ pipeline {
         {
         steps
         {
-        bat "docker run --name shilpa -d -p 9055:8080 devops:${BUILD_NUMBER}"
+        bat "docker run -d -p 9055:8080 devops:${BUILD_NUMBER}"
         }
        }
             stage('Deploy our image') {
