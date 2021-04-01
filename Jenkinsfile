@@ -66,10 +66,17 @@ pipeline {
         stage('Building our image') {
                         steps{
                         script {
-                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                            bat "docker build -t devops:${BUILD_NUMBER} ."
                         }
                       }
                    }
+       stage ("Docker Deployment")
+        {
+        steps
+        {
+        bat "docker run --name assignmentdevcontainer -d -p 9050:8080 devops:${BUILD_NUMBER}"
+        }
+       }
             stage('Deploy our image') {
                                         steps{
                                                script {
